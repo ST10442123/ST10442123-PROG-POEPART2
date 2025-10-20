@@ -88,8 +88,7 @@
               "RelativeToolTip": "..\\CMCS1.Tests\\ClaimsControllerTests.cs",
               "ViewState": "AgIAAHsAAAAAAAAAAAAowEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T13:34:37.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T13:34:37.04Z"
             },
             {
               "$type": "Document",
@@ -101,8 +100,7 @@
               "RelativeToolTip": "Models\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:47:39.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:47:39.691Z"
             },
             {
               "$type": "Document",
@@ -114,8 +112,7 @@
               "RelativeToolTip": "Models\\Claim.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAowCAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:48:35.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:48:35.573Z"
             },
             {
               "$type": "Document",
@@ -127,8 +124,7 @@
               "RelativeToolTip": "Models\\ClaimStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:48:13.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:48:13.435Z"
             },
             {
               "$type": "Document",
@@ -140,8 +136,7 @@
               "RelativeToolTip": "Views\\Admin\\ManageUsers.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-20T13:05:43.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T13:05:43.54Z"
             },
             {
               "$type": "Document",
@@ -153,8 +148,7 @@
               "RelativeToolTip": "..\\CMCS1.Tests\\TestHelpers.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwB8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T13:32:17.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T13:32:17.535Z"
             },
             {
               "$type": "Document",
@@ -164,7 +158,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jival\\OneDrive\\Documents\\c# projects\\CMCS1\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwD8AAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwD8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-20T12:54:04.013Z",
               "EditorCaption": ""
@@ -179,8 +173,7 @@
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:53:34.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:53:34.194Z"
             },
             {
               "$type": "Document",
@@ -192,8 +185,7 @@
               "RelativeToolTip": "Controllers\\AdminController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:59:03.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:59:03.836Z"
             },
             {
               "$type": "Document",
@@ -253,8 +245,7 @@
               "RelativeToolTip": "Controllers\\ClaimsController.cs",
               "ViewState": "AgIAAH8AAAAAAAAAAADwvwcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:58:30.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:58:30.778Z"
             },
             {
               "$type": "Document",

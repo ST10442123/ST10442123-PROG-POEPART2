@@ -61,7 +61,7 @@ namespace CMCS1
                         await roleManager.CreateAsync(new IdentityRole(r));
                 }
 
-                // Default admin login of testing (Manager role)
+                // Default admin login of testing       (Manager role)
                 var adminEmail = "admin@cmcs.com";
                 var admin = await userManager.FindByEmailAsync(adminEmail);
                 if (admin == null)
