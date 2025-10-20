@@ -15,7 +15,7 @@ namespace CMCS1
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // Identity + Roles
+            // Identity and Roles
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
@@ -61,7 +61,7 @@ namespace CMCS1
                         await roleManager.CreateAsync(new IdentityRole(r));
                 }
 
-                // default admin (Manager)
+                // Default admin login of testing (Manager role)
                 var adminEmail = "admin@cmcs.com";
                 var admin = await userManager.FindByEmailAsync(adminEmail);
                 if (admin == null)

@@ -30,7 +30,7 @@ namespace CMCS1.Models
 
         public ClaimStatus Status { get; set; } = ClaimStatus.Pending;
 
-        // stored filename of uploaded doc
+        // to store filename of uploaded doc
         public string? UploadedFileName { get; set; }
     }
 }
