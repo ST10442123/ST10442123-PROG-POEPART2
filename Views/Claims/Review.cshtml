@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CMCS1.Models.Claim>
+@{
+    ViewData["Title"] = "Review Pending Claims";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4 py-3">
+                    <h3 class="mb-0"><i class="bi bi-clipboard-check"></i> Pending Claims - Verification</h3>
+                </div>
+                <div class="card-body p-4">
+                    @if (!Model.Any())
+                    {
+                        <div class="alert alert-info text-center" role="alert">
+                            <i class="bi bi-info-circle"></i> There are currently no pending claims to review.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light border-bottom">
+                                    <tr class="text-center">
+                                        <th><i class="bi bi-person-circle"></i> Lecturer</th>
+                                        <th><i class="bi bi-calendar3"></i> Date</th>
+                                        <th><i class="bi bi-clock-history"></i> Hours</th>
+                                        <th><i class="bi bi-cash-coin"></i> Rate (R)</th>
+                                        <th><i class="bi bi-calculator"></i> Total (R)</th>
+                                        <th><i class="bi bi-chat-left-text"></i> Notes</th>
+                                        <th><i class="bi bi-file-earmark-text"></i> Document</th>
+                                        <th><i class="bi bi-gear"></i> Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var claim in Model)
+                                    {
+                                        <tr class="text-center">
+                                            <td class="fw-semibold">@claim.LecturerName</td>
+                                            <td>@claim.DateSubmitted.ToString("yyyy-MM-dd HH:mm")</td>
+                                            <td>@claim.HoursWorked</td>
+                                            <td>@string.Format("{0:N2}", claim.HourlyRate)</td>
+                                            <td class="fw-semibold">@string.Format("{0:N2}", claim.TotalAmount)</td>
+                                            <td class="text-start">@claim.Notes</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(claim.UploadedFileName))
+                                                {
+                                                    <a href="~/uploads/@claim.UploadedFileName" class="btn btn-outline-secondary btn-sm" target="_blank">
+                                                        <i class="bi bi-file-earmark-pdf"></i> View
+                                                    </a>
+                                                }
+                                                else
+                                                {
+
+                                                    <span class="text-muted">No file</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <form asp-action="Approve" method="post" class="d-inline">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="id" value="@claim.Id" />
+                                                    <button type="submit" class="btn btn-success btn-sm px-3" title="Approve Claim">
+                                                        <i class="bi bi-check-circle-fill"></i> Approve
+                                                    </button>
+                                                </form>
+                                                <form asp-action="Reject" method="post" class="d-inline">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="id" value="@claim.Id" />
+                                                    <button type="submit" class="btn btn-danger btn-sm px-3" title="Reject Claim">
+                                                        <i class="bi bi-x-circle-fill"></i> Reject
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer bg-light text-center py-3 rounded-bottom-4">
+                    <small class="text-muted"><i class="bi bi-info-circle"></i> Only Coordinators and Managers can approve or reject claims.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
