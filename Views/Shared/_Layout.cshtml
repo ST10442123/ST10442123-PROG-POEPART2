@@ -1,4 +1,4 @@
-﻿@using CMCS1.Models
+﻿@using CMCS1.Models   @* ✅ Change this if your namespace is CMCS1.Models *@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CMC1S</title>
+    <title>@ViewData["Title"] - CMCS1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CMCS.styles.css" asp-append-version="true" />
@@ -54,7 +54,6 @@
     </nav>
 
     <div class="container mt-3">
-        @* global messages *@
         @if (TempData["ErrorMessage"] != null)
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -79,7 +78,7 @@
 
     <footer class="border-top footer text-muted mt-4">
         <div class="container text-center py-3">
-            &copy; @DateTime.Now.Year - CMCS
+            &copy; @DateTime.Now.Year - CMCS1
         </div>
     </footer>
 
@@ -87,3 +86,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
