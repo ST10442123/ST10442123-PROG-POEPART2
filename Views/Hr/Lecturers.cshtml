@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CMCS1.Models.LecturerViewModel>
+
+@{
+    ViewData["Title"] = "Manage Lecturers";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white text-center rounded-top-4 py-3">
+                    <h3 class="mb-0">
+                        <i class="bi bi-person-lines-fill"></i> Manage Lecturers
+                    </h3>
+                </div>
+
+                <div class="card-body p-4">
+                    @if (!Model.Any())
+                    {
+                        <div class="alert alert-info text-center" role="alert">
+                            <i class="bi bi-info-circle"></i>
+                            No lecturers found.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light border-bottom">
+                                    <tr class="text-center">
+                                        <th><i class="bi bi-person-circle"></i> Name</th>
+                                        <th><i class="bi bi-envelope"></i> Email</th>
+                                        <th><i class="bi bi-telephone"></i> Phone</th>
+                                        <th><i class="bi bi-shield-lock"></i> Roles</th>
+                                        <th><i class="bi bi-gear"></i> Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var lecturer in Model)
+                                    {
+                                        <tr class="text-center">
+                                            <td class="fw-semibold">@lecturer.FullName</td>
+                                            <td>@lecturer.Email</td>
+                                            <td>@lecturer.PhoneNumber</td>
+                                            <td>@lecturer.Roles</td>
+                                            <td>
+                                                <a asp-action="EditLecturer"
+                                                   asp-route-id="@lecturer.Id"
+                                                   class="btn btn-sm btn-outline-primary px-3">
+                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+
+                <div class="card-footer bg-light text-center py-3 rounded-bottom-4">
+                    <small class="text-muted">
+                        <i class="bi bi-info-circle"></i>
+                        HR can use this page to view and maintain basic lecturer details.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

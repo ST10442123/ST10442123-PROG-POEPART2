@@ -1,23 +1,27 @@
 ﻿using System.Text;
+using System.Linq;
 using CMCS1.Data;
 using CMCS1.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCS1.Controllers
 {
-    // HR dashboard - restricted to Manager for now (acts as HR)
+    // HR dashboard and lecturer management - restricted to Manager (HR) role
     [Authorize(Roles = "Manager")]
     public class HrController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HrController(ApplicationDbContext context)
+        public HrController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        // HR Dashboard - View all approved claims
+        // HR Dashboard - all approved claims
         [HttpGet]
         public IActionResult Index()
         {
@@ -104,6 +108,37 @@ namespace CMCS1.Controllers
 
             return needsQuotes ? $"\"{value}\"" : value;
         }
+
+        // List lecturers and their basic details (for HR)
+        [HttpGet]
+        public async Task<IActionResult> Lecturers()
+        {
+            var users = _userManager.Users.ToList();
+            var result = new List<LecturerViewModel>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                // Only list lecturers; remove this if HR must see everyone
+                if (!roles.Contains("Lecturer"))
+                {
+                    continue;
+                }
+
+                result.Add(new LecturerViewModel
+                {
+                    Id = user.Id,
+                    FullName = user.FullName ?? user.UserName ?? string.Empty,
+                    Email = user.Email ?? user.UserName ?? string.Empty,
+                    PhoneNumber = user.PhoneNumber ?? string.Empty,
+                    Roles = string.Join(", ", roles)
+                });
+            }
+
+            return View(result);
+        }
     }
 }
+
 
