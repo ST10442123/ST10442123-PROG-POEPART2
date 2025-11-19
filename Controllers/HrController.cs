@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CMCS1.Controllers
 {
+    /// <summary>
+    /// HR area for the CMCS system.
+    /// Provides an automated dashboard for approved claims,
+    /// monthly reporting with CSV export, and basic lecturer management.
+    /// </summary>
+
     // HR dashboard and lecturer management - restricted to Manager (HR) role
     [Authorize(Roles = "Manager")]
     public class HrController : Controller
@@ -21,6 +27,11 @@ namespace CMCS1.Controllers
             _userManager = userManager;
         }
 
+
+        /// <summary>
+        /// HR dashboard showing all approved claims and summary totals.
+        /// This supports the HR automation requirement from Part 3 of the POE.
+        /// </summary>
         // HR Dashboard - all approved claims
         [HttpGet]
         public IActionResult Index()
@@ -33,6 +44,12 @@ namespace CMCS1.Controllers
             return View(approvedClaims);
         }
 
+
+
+        /// <summary>
+        /// Generates a monthly view of approved claims for a selected year and month.
+        /// Used for HR reporting and to support payroll processing.
+        /// </summary>
         // Monthly report - filter approved claims by year + month
         [HttpGet]
         public IActionResult MonthlyReport(int? year, int? month)
@@ -57,6 +74,13 @@ namespace CMCS1.Controllers
             return View(claims);
         }
 
+
+
+
+        /// <summary>
+        /// Exports the monthly approved claims to a CSV file so HR can import
+        /// the data into external systems (e.g., Excel / payroll).
+        /// </summary>
         // CSV export for monthly approved claims
         [HttpGet]
         public IActionResult ExportCsv(int? year, int? month)
@@ -109,6 +133,14 @@ namespace CMCS1.Controllers
             return needsQuotes ? $"\"{value}\"" : value;
         }
 
+
+
+
+
+        /// <summary>
+        /// Lists all users in the Lecturer role with their basic contact details.
+        /// Enables HR to view who will be paid for approved claims.
+        /// </summary>
         // List lecturers and their basic details (for HR)
         [HttpGet]
         public async Task<IActionResult> Lecturers()
@@ -139,6 +171,13 @@ namespace CMCS1.Controllers
             return View(result);
         }
 
+
+
+
+
+        /// <summary>
+        /// Loads the edit form for a specific lecturer.
+        /// </summary>
         // Edit lecturer details (GET)
         [HttpGet]
         public async Task<IActionResult> EditLecturer(string id)
@@ -165,6 +204,12 @@ namespace CMCS1.Controllers
             return View(vm);
         }
 
+
+
+        /// <summary>
+        /// Saves basic lecturer profile changes (FullName, PhoneNumber).
+        /// Keeps login details unchanged to avoid breaking authentication.
+        /// </summary>
         // Edit lecturer details (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]

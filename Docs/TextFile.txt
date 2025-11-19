@@ -1,0 +1,26 @@
+﻿CMCS1 Automation Summary for POE Part 3
+
+1. Lecturer Automation
+   - Auto-calculation of claim total: HoursWorked x HourlyRate on the Submit page.
+   - Strong server-side validation on Claim fields to prevent invalid data.
+   - File upload for supporting documents (e.g. timesheets, proof of work).
+
+2. Coordinator / Manager Automation
+   - Automated business rule checks before approval (hours and rate ranges).
+   - Claims that fall outside policy are automatically rejected with a clear reason.
+   - Review screen shows summary statistics (total claims, total hours, total amount, average hours).
+   - Filtering by lecturer name and submission date to speed up decision-making.
+
+3. HR Automation
+   - HR Dashboard shows all APPROVED claims only, with key totals and number of lecturers.
+   - Monthly reporting with selectable Year + Month.
+   - CSV export of approved claims so HR can use Excel or payroll tools.
+   - Lecturer management: HR can view lecturers and update basic profile information
+     (full name and phone number) used for communication and record-keeping.
+
+4. Presentation
+   - The PowerPoint presentation for this POE will be stored in this Docs folder
+     (e.g. CMCS1_Automation_Presentation.pptx) and will explain:
+       * The manual process vs the automated CMCS1 system.
+       * Screenshots of Lecturer, Coordinator, and HR views.
+       * How each automation feature supports institutional policies and reduces errors.
