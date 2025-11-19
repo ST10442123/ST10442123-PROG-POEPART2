@@ -1,19 +1,86 @@
 ﻿@model IEnumerable<CMCS1.Models.Claim>
+@using System.Linq
+
 @{
     ViewData["Title"] = "Review Pending Claims";
+
+    var totalClaims = Model.Count();
+    var totalHours = totalClaims > 0 ? Model.Sum(c => c.HoursWorked) : 0;
+    var totalAmount = totalClaims > 0 ? Model.Sum(c => c.TotalAmount) : 0;
+    var averageHours = totalClaims > 0 ? totalHours / totalClaims : 0;
 }
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white text-center rounded-top-4 py-3">
-                    <h3 class="mb-0"><i class="bi bi-clipboard-check"></i> Pending Claims - Verification</h3>
+                    <h3 class="mb-0">
+                        <i class="bi bi-clipboard-check"></i> Pending Claims - Verification
+                    </h3>
                 </div>
+
                 <div class="card-body p-4">
+
+                    @* SUMMARY PANEL *@
+                    @if (Model.Any())
+                    {
+                        <div class="mb-4">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <div class="fw-bold text-muted mb-1">
+                                                <i class="bi bi-list-check"></i> Total Pending Claims
+                                            </div>
+                                            <div class="fs-4 fw-bold">@totalClaims</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <div class="fw-bold text-muted mb-1">
+                                                <i class="bi bi-clock-history"></i> Total Hours
+                                            </div>
+                                            <div class="fs-4 fw-bold">@totalHours</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <div class="fw-bold text-muted mb-1">
+                                                <i class="bi bi-cash-coin"></i> Total Amount (R)
+                                            </div>
+                                            <div class="fs-4 fw-bold">
+                                                @string.Format("{0:N2}", totalAmount)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <div class="fw-bold text-muted mb-1">
+                                                <i class="bi bi-graph-up"></i> Average Hours / Claim
+                                            </div>
+                                            <div class="fs-4 fw-bold">
+                                                @string.Format("{0:N1}", averageHours)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @* MAIN TABLE *@
                     @if (!Model.Any())
                     {
                         <div class="alert alert-info text-center" role="alert">
-                            <i class="bi bi-info-circle"></i> There are currently no pending claims to review.
+                            <i class="bi bi-info-circle"></i>
+                            There are currently no pending claims to review.
                         </div>
                     }
                     else
@@ -23,7 +90,7 @@
                                 <thead class="table-light border-bottom">
                                     <tr class="text-center">
                                         <th><i class="bi bi-person-circle"></i> Lecturer</th>
-                                        <th><i class="bi bi-calendar3"></i> Date</th>
+                                        <th><i class="bi bi-calendar3"></i> Date Submitted</th>
                                         <th><i class="bi bi-clock-history"></i> Hours</th>
                                         <th><i class="bi bi-cash-coin"></i> Rate (R)</th>
                                         <th><i class="bi bi-calculator"></i> Total (R)</th>
@@ -45,13 +112,14 @@
                                             <td>
                                                 @if (!string.IsNullOrEmpty(claim.UploadedFileName))
                                                 {
-                                                    <a href="~/uploads/@claim.UploadedFileName" class="btn btn-outline-secondary btn-sm" target="_blank">
+                                                    <a href="~/uploads/@claim.UploadedFileName"
+                                                       class="btn btn-outline-secondary btn-sm"
+                                                       target="_blank">
                                                         <i class="bi bi-file-earmark-pdf"></i> View
                                                     </a>
                                                 }
                                                 else
                                                 {
-
                                                     <span class="text-muted">No file</span>
                                                 }
                                             </td>
@@ -59,14 +127,19 @@
                                                 <form asp-action="Approve" method="post" class="d-inline">
                                                     @Html.AntiForgeryToken()
                                                     <input type="hidden" name="id" value="@claim.Id" />
-                                                    <button type="submit" class="btn btn-success btn-sm px-3" title="Approve Claim">
+                                                    <button type="submit"
+                                                            class="btn btn-success btn-sm px-3"
+                                                            title="Approve Claim">
                                                         <i class="bi bi-check-circle-fill"></i> Approve
                                                     </button>
                                                 </form>
+
                                                 <form asp-action="Reject" method="post" class="d-inline">
                                                     @Html.AntiForgeryToken()
                                                     <input type="hidden" name="id" value="@claim.Id" />
-                                                    <button type="submit" class="btn btn-danger btn-sm px-3" title="Reject Claim">
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm px-3"
+                                                            title="Reject Claim">
                                                         <i class="bi bi-x-circle-fill"></i> Reject
                                                     </button>
                                                 </form>
@@ -78,11 +151,16 @@
                         </div>
                     }
                 </div>
+
                 <div class="card-footer bg-light text-center py-3 rounded-bottom-4">
-                    <small class="text-muted"><i class="bi bi-info-circle"></i> Only Coordinators and Managers can approve or reject claims.</small>
+                    <small class="text-muted">
+                        <i class="bi bi-info-circle"></i>
+                        Coordinators and Managers can approve or reject claims from this page.
+                    </small>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
