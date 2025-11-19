@@ -138,6 +138,70 @@ namespace CMCS1.Controllers
 
             return View(result);
         }
+
+        // Edit lecturer details (GET)
+        [HttpGet]
+        public async Task<IActionResult> EditLecturer(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new EditLecturerViewModel
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return View(vm);
+        }
+
+        // Edit lecturer details (POST)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditLecturer(EditLecturerViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "Lecturer not found.";
+                return RedirectToAction(nameof(Lecturers));
+            }
+
+            user.FullName = model.FullName;
+            user.PhoneNumber = model.PhoneNumber;
+
+            // We keep Email/UserName as-is to avoid breaking login.
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "Lecturer details updated successfully.";
+                return RedirectToAction(nameof(Lecturers));
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
+
     }
 }
 
