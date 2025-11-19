@@ -73,14 +73,39 @@ namespace CMCS1.Controllers
 
         // Review — view only, everyone logged-in
         [HttpGet]
-        public IActionResult Review()
+        public IActionResult Review(string? searchLecturer, DateTime? fromDate, DateTime? toDate)
         {
-            var pending = _context.Claims
-                .Where(c => c.Status == ClaimStatus.Pending)
+            var query = _context.Claims
+                .Where(c => c.Status == ClaimStatus.Pending);
+
+            // Filter by lecturer name (contains)
+            if (!string.IsNullOrWhiteSpace(searchLecturer))
+            {
+                var term = searchLecturer.Trim();
+                query = query.Where(c => c.LecturerName.Contains(term));
+            }
+
+            // Filter by date range (DateSubmitted)
+            if (fromDate.HasValue)
+            {
+                var from = fromDate.Value.Date;
+                query = query.Where(c => c.DateSubmitted >= from);
+            }
+
+            if (toDate.HasValue)
+            {
+                // include the whole "to" day
+                var to = toDate.Value.Date.AddDays(1).AddTicks(-1);
+                query = query.Where(c => c.DateSubmitted <= to);
+            }
+
+            var pending = query
                 .OrderByDescending(c => c.DateSubmitted)
                 .ToList();
+
             return View(pending);
         }
+
 
         // Approve — only Coordinator & Manager
         [HttpPost]
