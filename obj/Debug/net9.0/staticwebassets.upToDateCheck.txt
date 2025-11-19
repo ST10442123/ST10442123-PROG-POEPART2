@@ -61,6 +61,8 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\75831c90-80f0-4ef2-bc5d-5cbb054310d8.pdf
+wwwroot\uploads\cd9716d3-70e7-4e51-83fe-7ab26e382193.pdf
 wwwroot\uploads\d76067d6-75c4-4ca0-bef7-07c5fa7463b1.pdf
 C:\Users\jival\OneDrive\Documents\c# projects\CMCS1\wwwroot\css\site.css
 C:\Users\jival\OneDrive\Documents\c# projects\CMCS1\wwwroot\favicon.ico

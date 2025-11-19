@@ -32,6 +32,15 @@
                             </div>
                         </div>
 
+                        <!-- NEW: Auto-calculated total -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-calculator"></i> Calculated Total (R)
+                            </label>
+                            <input id="TotalAmountDisplay" class="form-control form-control-lg" readonly />
+                            <div class="form-text">This amount is automatically calculated as <strong>Hours × Hourly Rate</strong>.</div>
+                        </div>
+
                         <div class="mb-3">
                             <label asp-for="Notes" class="form-label fw-semibold"><i class="bi bi-chat-left-text"></i> Additional Notes</label>
                             <textarea asp-for="Notes" class="form-control form-control-lg" rows="3" placeholder="Enter any additional details or context..."></textarea>
@@ -58,7 +67,34 @@
         </div>
     </div>
 </div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hoursInput = document.getElementById("HoursWorked");
+            const rateInput = document.getElementById("HourlyRate");
+            const totalInput = document.getElementById("TotalAmountDisplay");
+
+            function updateTotal() {
+                const hours = parseFloat(hoursInput?.value) || 0;
+                const rate = parseFloat(rateInput?.value) || 0;
+                const total = hours * rate;
+
+                if (total > 0) {
+                    totalInput.value = total.toFixed(2);
+                } else {
+                    totalInput.value = "";
+                }
+            }
+
+            if (hoursInput && rateInput && totalInput) {
+                hoursInput.addEventListener("input", updateTotal);
+                rateInput.addEventListener("input", updateTotal);
+                updateTotal();
+            }
+        });
+    </script>
 }
+
 
