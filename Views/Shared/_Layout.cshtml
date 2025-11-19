@@ -27,11 +27,23 @@
 
             <div class="collapse navbar-collapse" id="navMain">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" asp-controller="Claims" asp-action="Submit">Submit Claim</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Claims" asp-action="Track">Track Claims</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Claims" asp-action="Review">Review Claims</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">Manage Users</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Claims" asp-action="Submit">Submit Claim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Claims" asp-action="Track">Track Claims</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Claims" asp-action="Review">Review Claims</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Hr" asp-action="Index">HR Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">Manage Users</a>
+                    </li>
                 </ul>
+
 
                 <ul class="navbar-nav">
                     @if (SignInManager.IsSignedIn(User))
