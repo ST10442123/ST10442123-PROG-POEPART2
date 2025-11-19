@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\jival\\OneDrive\\Documents\\c# projects\\CMCS1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|c:\\users\\jival\\onedrive\\documents\\c# projects\\cmcs1\\views\\claims\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|solutionrelative:views\\claims\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|c:\\users\\jival\\onedrive\\documents\\c# projects\\cmcs1\\models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|solutionrelative:models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|c:\\users\\jival\\onedrive\\documents\\c# projects\\cmcs1\\views\\claims\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|solutionrelative:views\\claims\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1BE86478-49BA-40D5-8734-16C421896881}|CMCS1.csproj|c:\\users\\jival\\onedrive\\documents\\c# projects\\cmcs1\\views\\claims\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -70,17 +70,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Claim.cs",
               "DocumentMoniker": "C:\\Users\\jival\\OneDrive\\Documents\\c# projects\\CMCS1\\Models\\Claim.cs",
               "RelativeDocumentMoniker": "Models\\Claim.cs",
               "ToolTip": "C:\\Users\\jival\\OneDrive\\Documents\\c# projects\\CMCS1\\Models\\Claim.cs",
               "RelativeToolTip": "Models\\Claim.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAswCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-20T12:48:35.573Z",
               "EditorCaption": ""
@@ -123,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Submit.cshtml",
               "DocumentMoniker": "C:\\Users\\jival\\OneDrive\\Documents\\c# projects\\CMCS1\\Views\\Claims\\Submit.cshtml",
               "RelativeDocumentMoniker": "Views\\Claims\\Submit.cshtml",

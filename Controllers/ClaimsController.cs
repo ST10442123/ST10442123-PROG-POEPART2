@@ -96,6 +96,16 @@ namespace CMCS1.Controllers
                     TempData["ErrorMessage"] = "Claim not found.";
                     return RedirectToAction(nameof(Review));
                 }
+
+                // 🔄 Automated policy checks before approval
+                if (!IsClaimWithinPolicy(claim, out var reason))
+                {
+                    claim.Status = ClaimStatus.Rejected;
+                    _context.SaveChanges();
+                    TempData["ErrorMessage"] = $"Claim automatically rejected: {reason}";
+                    return RedirectToAction(nameof(Review));
+                }
+
                 claim.Status = ClaimStatus.Approved;
                 _context.SaveChanges();
                 TempData["SuccessMessage"] = "✅ Claim approved.";
@@ -108,6 +118,8 @@ namespace CMCS1.Controllers
                 return RedirectToAction(nameof(Review));
             }
         }
+
+
 
         // Reject — only Coordinator & Manager
         [HttpPost]
@@ -145,6 +157,33 @@ namespace CMCS1.Controllers
                 .ToList();
             return View(claims);
         }
+
+
+        /// <summary>
+        /// Automatic business rule checks for claim approval.
+        /// Adjust the rules here if policies change.
+        /// </summary>
+        private bool IsClaimWithinPolicy(Claim claim, out string reason)
+        {
+            // Example policy: hours between 1 and 200
+            if (claim.HoursWorked < 1 || claim.HoursWorked > 200)
+            {
+                reason = "Hours worked must be between 1 and 200 for approval.";
+                return false;
+            }
+
+            // Example policy: hourly rate between R100 and R2000
+            if (claim.HourlyRate < 100 || claim.HourlyRate > 2000)
+            {
+                reason = "Hourly rate must be between R100 and R2000 for approval.";
+                return false;
+            }
+
+            // You can add more automatic rules here if needed
+            reason = string.Empty;
+            return true;
+        }
+
     }
 }
 
